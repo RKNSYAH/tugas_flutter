@@ -14,19 +14,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget daftar = Container(
-      child: Column(
-        children: [Text('KAFE'), Text('tss')],
-      ),
-    );
-
     return MaterialApp(
       home: Scaffold(
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('images/download.png'),
+              Image.asset('images/download.png', width: 200, height: 200,),
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: Text(
@@ -41,7 +35,7 @@ class MainApp extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 25),
                 child: Text("SMKN 2 BDG"),
               ),
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
