@@ -23,7 +23,6 @@ class _DaftarKomposisiState extends State<DaftarKomposisi> {
           setState(() {
             check = !check;
           });
-          print(check);
         },
         child: Container(
           decoration: BoxDecoration(
