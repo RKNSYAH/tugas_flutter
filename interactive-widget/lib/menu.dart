@@ -15,9 +15,8 @@ class DaftarMenu extends StatelessWidget {
       elevation: 3,
       borderRadius: BorderRadius.circular(10),
       child: InkWell(
-        onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const Komposisi())
-        ),
+        onTap: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const Komposisi())),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
@@ -78,13 +77,16 @@ class Menu extends StatelessWidget {
             ),
             Container(
               padding: const EdgeInsets.all(20),
+              height: MediaQuery.of(context).size.height - 200,
               child: const Column(
                 children: [
                   DaftarMenu(namaMinuman: "Long Black", harga: 15000),
-                  SizedBox(height: 10),
+                  Spacer(),
                   DaftarMenu(namaMinuman: "Espresso", harga: 20000),
-                  SizedBox(height: 10),
-                  DaftarMenu(namaMinuman: "Americano", harga: 20000),
+                  Spacer(),
+                  DaftarMenu(namaMinuman: "Frappe", harga: 20000),
+                  Spacer(),
+                  DaftarMenu(namaMinuman: "Cappucchino", harga: 25000),
                 ],
               ),
             )

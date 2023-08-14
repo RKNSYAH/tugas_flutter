@@ -3,7 +3,7 @@ import 'menu.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: MainApp(),
     ),
   );
@@ -21,8 +21,8 @@ class MainApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('images/download.png', width: 200, height: 200,),
-              Padding(
-                padding: const EdgeInsets.all(20),
+              const Padding(
+                padding: EdgeInsets.all(20),
                 child: Text(
                   'KAFE',
                   style: TextStyle(
@@ -31,8 +31,8 @@ class MainApp extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 25),
+              const Padding(
+                padding: EdgeInsets.only(bottom: 25),
                 child: Text("SMKN 2 BDG"),
               ),
               ElevatedButton(
@@ -43,13 +43,13 @@ class MainApp extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text('Menu',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white)),
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
-                        Color.fromARGB(255, 104, 98, 89)),
-                    minimumSize: MaterialStateProperty.all(Size(250, 50))),
+                        const Color.fromARGB(255, 104, 98, 89)),
+                    minimumSize: MaterialStateProperty.all(const Size(250, 50))),
+                child: const Text('Menu',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white)),
               ),
             ],
           ),

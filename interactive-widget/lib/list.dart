@@ -12,7 +12,7 @@ class DaftarKomposisi extends StatefulWidget {
 }
 
 class _DaftarKomposisiState extends State<DaftarKomposisi> {
-  bool check = true;
+  bool check = false;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -37,9 +37,13 @@ class _DaftarKomposisiState extends State<DaftarKomposisi> {
             children: [
               Row(
                 children: [
-                  Icon(check
-                      ? Icons.check_box_outline_blank
-                      : Icons.check_box_outlined)
+                  Checkbox(
+                      value: check,
+                      onChanged: (value) {
+                        setState(() {
+                          check = value!;
+                        });
+                      })
                 ],
               ),
               Column(
@@ -68,11 +72,12 @@ class Komposisi extends StatefulWidget {
 }
 
 class _KomposisiState extends State<Komposisi> {
+  double slider = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Komposisi'),
+        title: const Text('Kustomisasi'),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 104, 98, 89),
       ),
@@ -95,31 +100,77 @@ class _KomposisiState extends State<Komposisi> {
               namaMinuman: 'Extra Gula',
               harga: 500,
             ),
+            const Column(
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text("Catatan : "),
+                    ),
+                  ],
+                ),
+                TextField(
+                  maxLines: 5,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Masukkan Catatan..',
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                Text("Banyak Es :"),
+              ],
+            ),
+            Slider(
+              value: slider,
+              max: 100,
+              onChanged: (value) => setState(() {
+                slider = value;
+              }),
+              divisions: 4,
+              thumbColor: Color.fromARGB(255, 104, 98, 89),
+              activeColor: Color.fromARGB(255, 104, 98, 89),
+            ),
             Expanded(
                 child: Align(
               alignment: Alignment.bottomRight,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          const Color.fromARGB(255, 104, 98, 89)),
-                      minimumSize: MaterialStateProperty.all(const Size(250, 50))),
-                  onPressed: () => showDialog(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Pesanan Di Tambahkan'),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, 'Cancel'),
-                              child: const Text('Cancel'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    icon: Icon(Icons.cancel),
+                    color: Colors.red,
+                  ),
+                  ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color.fromARGB(255, 104, 98, 89)),
+                          minimumSize:
+                              MaterialStateProperty.all(const Size(250, 50))),
+                      onPressed: () => showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: const Text('Pesanan Di Tambahkan'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text('OK'),
+                                ),
+                              ],
                             ),
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, 'OK'),
-                              child: const Text('OK'),
-                            ),
-                          ],
-                        ),
-                      ),
-                  child: const Text('Tambah Pesanan')),
+                          ),
+                      child: const Text('Tambah Pesanan')),
+                ],
+              ),
             ))
           ],
         ),
