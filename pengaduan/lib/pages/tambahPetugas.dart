@@ -53,7 +53,7 @@ class TambahPetugas extends StatelessWidget {
                 }).then((value) => petugasController.getPetugas());
               }
             },
-            child: Text("Tambah Masyarakat"),
+            child: Text("Tambah Petugas"),
           )
         ],
       ),

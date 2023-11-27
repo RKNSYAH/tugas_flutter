@@ -65,6 +65,19 @@ class ListMasyarakatScreen extends StatelessWidget {
               children: [
                 ElevatedButton(
                     onPressed: () {
+                      Get.toNamed("/tanggapan");
+                    },
+                    child: const Text("Tanggapan")),
+                ElevatedButton(
+                    onPressed: () {
+                      Get.toNamed("/pengaduan");
+                    },
+                    child: const Text("Pengaduan")),
+                SizedBox(
+                  height: 15,
+                ),
+                ElevatedButton(
+                    onPressed: () {
                       Get.toNamed("/petugas");
                     },
                     child: const Text("Petugas")),
