@@ -28,19 +28,14 @@ class PageTanggapan extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Image.network(
-                            data[index].url,
-                            height: 150,
-                            width: 150,
-                          ),
-                          Text("Judul Pengaduan : " + data[index].isiLaporan),
+                          Text("Isi Tanggapan : " + data[index].tanggapan),
                         ],
                       ),
                       Column(
                         children: [
                           IconButton(
                               onPressed: () {
-                                Get.toNamed("/editPengaduan", arguments: index);
+                                Get.toNamed("/editTanggapan", arguments: index);
                               },
                               icon: Icon(Icons.edit)),
                           IconButton(

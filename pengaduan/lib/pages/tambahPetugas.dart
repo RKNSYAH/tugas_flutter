@@ -10,6 +10,7 @@ class TambahPetugas extends StatelessWidget {
   Widget build(BuildContext context) {
     final petugasController = Get.put(PetugasController());
     RxMap mapValue = {}.obs;
+    RxList levelEnum = ['Admin', 'Petugas'].obs;
     return Scaffold(
       appBar: AppBar(
         title: Text('Tambah petugas'),
@@ -31,6 +32,28 @@ class TambahPetugas extends StatelessWidget {
           InputValue(
             label: "telp",
             onSubmitted: (value) => mapValue["telp"] = value,
+          ),
+          Obx(
+            () => DropdownButtonFormField(
+              value: null,
+              elevation: 16,
+              decoration: InputDecoration(
+                hintText: 'Pilih Level',
+                filled: true,
+                fillColor: Colors.white,
+                errorStyle: TextStyle(color: Colors.yellow),
+              ),
+              style: const TextStyle(color: Colors.deepPurple),
+              onChanged: (value) {
+                mapValue['id_pengaduan'] = value;
+              },
+              items: levelEnum.map((value) {
+                return DropdownMenuItem(
+                  child: Text(value),
+                  value: value,
+                );
+              }).toList(),
+            ),
           ),
           ElevatedButton(
             onPressed: () {

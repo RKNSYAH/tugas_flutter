@@ -5,15 +5,18 @@ class InputValue extends StatelessWidget {
     super.key,
     required this.onSubmitted,
     required this.label,
+    this.initval,
   });
 
   final Function(String value) onSubmitted;
   final String label;
+  final String? initval;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       onChanged: onSubmitted,
+      initialValue: initval,
       decoration: InputDecoration(labelText: label),
     );
   }

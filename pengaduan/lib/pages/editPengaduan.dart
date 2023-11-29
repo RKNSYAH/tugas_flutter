@@ -9,9 +9,10 @@ class EditPengaduan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pengaduanController = Get.put(PengaduanController());
-    RxMap mapValue = {}.obs;
     final data = pengaduanController.list;
     var index = Get.arguments;
+    RxMap mapValue = {}.obs;
+
     return Scaffold(
         appBar: AppBar(
           title: Text('Edit petugas'),
@@ -45,10 +46,12 @@ class EditPengaduan extends StatelessWidget {
             ),
             InputValue(
               label: "isi_laporan",
+              initval: data[index].isiLaporan,
               onSubmitted: (value) => mapValue["isi_laporan"] = value,
             ),
             InputValue(
               label: "status",
+              initval: data[index].status,
               onSubmitted: (value) => mapValue["status"] = value,
             ),
             ElevatedButton(
